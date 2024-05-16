@@ -21,6 +21,9 @@ A kotlin multiplatform library that makes it easier to work with Google's MLKit.
   </a>
 </p>
 
+
+# CURRENTLY IN DEVELOPMENT
+
 ## How it works
 TitanSocket handles all the websocket connections, ping & pong between the client & server, and the event notifications for when data is received or broadcasted, or any connectivity status changes happen.
 
