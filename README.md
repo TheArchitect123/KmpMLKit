@@ -2,7 +2,7 @@
 
 <br/>
 <p align="center">
-    <a href="https://github.com/TheArchitect123/KmpMLKit"><img src="./ai.jpg" align="center" width=350/></a>
+    <a href="https://github.com/TheArchitect123/KmpMLKit"><img src="./ai.jpg" align="center" width=250/></a>
 </p>
 
 <p align="center">
