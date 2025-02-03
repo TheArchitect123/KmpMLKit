@@ -49,9 +49,11 @@ kotlin {
             dependsOn(commonMain)
             dependencies {
                 if (project.findProperty("enableBarcodeScanning") == "true") {
+                    implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
                     implementation("com.google.mlkit:barcode-scanning:17.3.0")
                 }
                 if (project.findProperty("enableFaceDetection") == "true") {
+                    implementation("com.google.mlkit:face-mesh-detection:16.0.0-beta3")
                     implementation("com.google.mlkit:face-detection:16.1.7")
                 }
                 if (project.findProperty("enableTextRecognition") == "true") {
@@ -74,6 +76,18 @@ kotlin {
                 }
                 if (project.findProperty("enableDocumentScanner") == "true") {
                     implementation("com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1")
+                }
+                if (project.findProperty("enableSmartReply") == "true") {
+                    implementation("com.google.mlkit:smart-reply:17.0.4")
+                }
+                if (project.findProperty("enableLanguageDetection") == "true") {
+                    implementation("com.google.mlkit:language-id:17.0.6")
+                }
+                if (project.findProperty("enableLanguageTranslation") == "true") {
+                    implementation("com.google.mlkit:translate:17.0.3")
+                }
+                if (project.findProperty("enableTextExtraction") == "true") {
+                    implementation("com.google.mlkit:entity-extraction:16.0.0-beta5")
                 }
             }
         }
@@ -141,7 +155,18 @@ afterEvaluate {
     }
 }
 
-tasks.named("sourcesJar").configure { dependsOn(":shared:kspCommonMainKotlinMetadata") }
+signing {
+    val privateKeyFile = project.properties["signing.privateKeyFile"] as? String
+        ?: error("No Private key file found")
+    val passphrase = project.properties["signing.password"] as? String
+        ?: error("No Passphrase found for signing")
+
+    // Read the private key from the file
+    val privateKey = File(privateKeyFile).readText(Charsets.UTF_8)
+
+    useInMemoryPgpKeys(privateKey, passphrase)
+    sign(publishing.publications)
+}
 
 ksp {
     arg("moduleName", project.name)
@@ -155,7 +180,6 @@ android {
     }
     buildFeatures{
         viewBinding = true
-        compose = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
