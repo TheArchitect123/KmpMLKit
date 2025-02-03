@@ -1,12 +1,12 @@
-package com.architect.kmpmlkit.barcode.external
+package com.architect.neuralKmp.barcode.external
 
 import com.architect.kmpessentials.KmpAndroid
-import com.architect.kmpmlkit.barcode.BarcodeScannerOptions
-import com.architect.kmpmlkit.typealiases.DefaultActionWithStringParam
+import com.architect.neuralKmp.barcode.BarcodeScannerOptions
+import com.architect.neuralKmp.typealiases.DefaultActionWithStringParam
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
-actual class KmpBarcodeScanner {
+actual class KmpMLBarcodeScanner {
     actual companion object {
         actual fun openExternalBarcodeScanner(
             options: BarcodeScannerOptions,

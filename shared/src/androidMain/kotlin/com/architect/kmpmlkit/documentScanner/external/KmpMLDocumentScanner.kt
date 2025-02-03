@@ -1,25 +1,27 @@
-package com.architect.kmpmlkit.documentScanner.external
+package com.architect.neuralKmp.documentScanner.external
 
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
-import com.architect.kmpmlkit.KmpMLAndroid
-import com.architect.kmpmlkit.documentScanner.external.config.ScannerOptions
-import com.architect.kmpmlkit.typealiases.DefaultManyFilePathsAction
+import com.architect.neuralKmp.KmpMLAndroid
+import com.architect.neuralKmp.documentScanner.external.config.ScannerOptions
+import com.architect.neuralKmp.typealiases.DefaultManyStringsAction
+import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.RESULT_FORMAT_JPEG
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.RESULT_FORMAT_PDF
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.SCANNER_MODE_FULL
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
 
-actual class KmpDocumentScanner {
+actual class KmpMLDocumentScanner {
     actual companion object {
         internal lateinit var resultLauncher: ActivityResultLauncher<IntentSenderRequest>
-        internal var action: DefaultManyFilePathsAction? = null
+        internal var action: DefaultManyStringsAction? = null
 
-        actual fun openExternalDocumentScanner(options: ScannerOptions, action: DefaultManyFilePathsAction) {
+        actual fun openExternalDocumentScanner(options: ScannerOptions, action: DefaultManyStringsAction) {
             this.action = action
+            TranslateLanguage.THAI
             val genOptions = GmsDocumentScannerOptions.Builder()
                 .setGalleryImportAllowed(options.allowGalleryImport)
                 .setPageLimit(options.pageLimit)

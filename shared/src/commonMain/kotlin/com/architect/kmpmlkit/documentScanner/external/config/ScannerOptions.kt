@@ -1,4 +1,4 @@
-package com.architect.kmpmlkit.documentScanner.external.config
+package com.architect.neuralKmp.documentScanner.external.config
 
 data class ScannerOptions(
     val allowGalleryImport: Boolean = true,

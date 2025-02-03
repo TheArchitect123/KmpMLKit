@@ -89,6 +89,11 @@ kotlin {
                 if (project.findProperty("enableTextExtraction") == "true") {
                     implementation("com.google.mlkit:entity-extraction:16.0.0-beta5")
                 }
+
+                if (project.findProperty("enablePoseDetection") == "true") {
+                    implementation("com.google.mlkit:pose-detection:18.0.0-beta5")
+                    implementation("com.google.mlkit:pose-detection-accurate:18.0.0-beta5")
+                }
             }
         }
 
@@ -114,16 +119,16 @@ afterEvaluate {
         // Define coordinates for the published artifact
         coordinates(
             groupId = "io.github.thearchitect123",
-            artifactId = "KmpMLKit",
+            artifactId = "NeuralKMP",
             version = "0.0.1"
         )
 
         // Configure POM metadata for the published artifact
         pom {
-            name.set("KmpMLKit")
-            description.set("A kotlin multiplatform library that makes it easier to work with Google's MLKit features. Supports both iOS & Android")
+            name.set("NeuralKMP")
+            description.set("A kotlin multiplatform library that handles anything AI & MachineLearning. Supports iOS, Android & JVM")
             inceptionYear.set("2025")
-            url.set("https://github.com/TheArchitect123/KmpMLKit")
+            url.set("https://github.com/TheArchitect123/NeuralKMP")
 
             licenses {
                 license {
@@ -143,7 +148,7 @@ afterEvaluate {
 
             // Specify SCM information
             scm {
-                url.set("https://github.com/TheArchitect123/KmpMLKit")
+                url.set("https://github.com/TheArchitect123/NeuralKMP")
             }
         }
 
@@ -173,7 +178,7 @@ ksp {
 }
 
 android {
-    namespace = "com.architect.kmpmlkit"
+    namespace = "com.architect.neuralKmp"
     compileSdk = 35
     defaultConfig {
         minSdk = 21

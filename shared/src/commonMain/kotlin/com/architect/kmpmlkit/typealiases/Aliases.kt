@@ -1,4 +1,6 @@
-package com.architect.kmpmlkit.typealiases
+package com.architect.neuralKmp.typealiases
+
+import com.architect.neuralKmp.translation.TargetLanguage
 
 typealias DefaultActionWithStringParam = (String?) -> Unit
-typealias DefaultManyFilePathsAction = (List<String>) -> Unit
+typealias DefaultManyStringsAction = (List<String>) -> Unit

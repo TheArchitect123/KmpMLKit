@@ -1,4 +1,4 @@
-package com.architect.kmpmlkit
+package com.architect.neuralKmp
 
 import android.app.Activity.RESULT_OK
 import android.app.Application
@@ -6,7 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.FragmentActivity
 import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
-import com.architect.kmpmlkit.documentScanner.external.KmpDocumentScanner
+import com.architect.neuralKmp.documentScanner.external.KmpMLDocumentScanner
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 
 class KmpMLAndroid {
@@ -46,7 +46,7 @@ class KmpMLAndroid {
         }
 
         private fun registerAllContracts() {
-            KmpDocumentScanner.resultLauncher = clientAppContext!!.registerForActivityResult(
+            KmpMLDocumentScanner.resultLauncher = clientAppContext!!.registerForActivityResult(
                 ActivityResultContracts.StartIntentSenderForResult()
             ) { result ->
                 if (result.resultCode == RESULT_OK) {
@@ -62,7 +62,7 @@ class KmpMLAndroid {
                         cpages.add(pdf.getUri().path ?: "")
                     }
 
-                    KmpDocumentScanner.action?.invoke(cpages)
+                    KmpMLDocumentScanner.action?.invoke(cpages)
                 } else {
                     KmpLogging.writeError("KMP-ML-KIT", "${result.data?.extras}")
                     KmpToast.showToastShort("mmm...something went wrong")

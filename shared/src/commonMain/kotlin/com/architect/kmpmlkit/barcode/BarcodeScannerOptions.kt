@@ -1,4 +1,4 @@
-package com.architect.kmpmlkit.barcode
+package com.architect.neuralKmp.barcode
 
 data class BarcodeScannerOptions(
     val defaultBarcodeType : Int = BarcodeTypes.FORMAT_QR_CODE,

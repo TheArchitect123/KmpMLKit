@@ -1,4 +1,4 @@
-package com.architect.kmpmlkit.barcode
+package com.architect.neuralKmp.barcode
 
 class BarcodeTypes {
     companion object {

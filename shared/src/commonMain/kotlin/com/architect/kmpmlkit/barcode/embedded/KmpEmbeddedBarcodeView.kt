@@ -1,4 +1,4 @@
-package com.architect.kmpmlkit.barcode.embedded
+package com.architect.neuralKmp.barcode.embedded
 
 class KmpEmbeddedBarcodeView {
 }
