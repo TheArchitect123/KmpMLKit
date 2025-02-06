@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
+import com.architect.kmpmlkit.extensions.KmpMlLogger
 import com.architect.neuralKmp.KmpMLAndroid
 import com.architect.neuralKmp.documentScanner.external.config.ScannerOptions
 import com.architect.neuralKmp.typealiases.DefaultManyStringsAction
@@ -43,8 +44,7 @@ actual class KmpMLDocumentScanner {
                     resultLauncher.launch(IntentSenderRequest.Builder(intentSender).build())
                 }
                 .addOnFailureListener {
-                    KmpLogging.writeError("KMP-ML-KIT", it.stackTraceToString())
-                    KmpToast.showToastShort("mmm...something went wrong")
+                    KmpMlLogger.logErrorWithStackTrace(it.stackTraceToString())
                 }
         }
     }

@@ -2,6 +2,7 @@ package com.architect.neuralKmp.translation
 
 import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
+import com.architect.kmpmlkit.extensions.KmpMlLogger
 import com.architect.neuralKmp.typealiases.DefaultActionWithStringParam
 import com.google.mlkit.nl.languageid.LanguageIdentification
 import com.google.mlkit.nl.translate.Translation
@@ -25,8 +26,7 @@ actual class KmpMLTranslator {
                 action(it)
             }
                 .addOnFailureListener {
-                    KmpLogging.writeError("KMP-ML-KIT", it.stackTraceToString())
-                    KmpToast.showToastShort("mmm...something went wrong")
+                    KmpMlLogger.logErrorWithStackTrace(it.stackTraceToString())
                 }
         }
 
@@ -60,8 +60,7 @@ actual class KmpMLTranslator {
                     )
                 }
                 .addOnFailureListener {
-                    KmpLogging.writeError("KMP-ML-KIT", it.stackTraceToString())
-                    KmpToast.showToastShort("mmm...something went wrong")
+                    KmpMlLogger.logErrorWithStackTrace(it.stackTraceToString())
                 }
         }
     }

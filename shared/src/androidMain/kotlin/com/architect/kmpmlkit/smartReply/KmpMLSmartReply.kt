@@ -2,6 +2,7 @@ package com.architect.neuralKmp.smartReply
 
 import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
+import com.architect.kmpmlkit.extensions.KmpMlLogger
 import com.architect.neuralKmp.typealiases.DefaultManyStringsAction
 import com.google.mlkit.nl.smartreply.SmartReply
 import com.google.mlkit.nl.smartreply.SmartReplySuggestionResult
@@ -24,8 +25,7 @@ actual class KmpMLSmartReply {
                     }
                 }
                 .addOnFailureListener {
-                    KmpLogging.writeError("KMP-ML-KIT", it.stackTraceToString())
-                    KmpToast.showToastShort("mmm...something went wrong")
+                    KmpMlLogger.logErrorWithStackTrace(it.stackTraceToString())
                 }
         }
     }

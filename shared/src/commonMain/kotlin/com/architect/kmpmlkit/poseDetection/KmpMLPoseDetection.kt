@@ -1,8 +1,10 @@
 package com.architect.neuralKmp.poseDetection
 
+import com.architect.neuralKmp.typealiases.DefaultPoseFeaturesAction
+
 expect class KmpMLPoseDetection {
     companion object {
-        fun startStreamingPoseDetector(bufferImage: ByteArray)
-        fun stopStreamingPoseDetector()
+        fun getFromLiveStreamingPoseDetector(bufferImage: ByteArray, action: DefaultPoseFeaturesAction)
+        fun getSinglePoseFromStaticImage(bufferImage: ByteArray, action: DefaultPoseFeaturesAction)
     }
 }

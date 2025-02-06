@@ -2,6 +2,7 @@ package com.architect.neuralKmp.languageIdentification
 
 import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
+import com.architect.kmpmlkit.extensions.KmpMlLogger
 import com.architect.neuralKmp.typealiases.DefaultActionWithStringParam
 import com.google.mlkit.nl.languageid.LanguageIdentification
 
@@ -17,8 +18,7 @@ actual class KmpMLLanguageDetection {
                     languageIdentified(languageCode)
                 }
                 .addOnFailureListener {
-                    KmpLogging.writeError("KMP-ML-KIT", it.stackTraceToString())
-                    KmpToast.showToastShort("mmm...something went wrong")
+                    KmpMlLogger.logErrorWithStackTrace(it.stackTraceToString())
                 }
         }
     }
