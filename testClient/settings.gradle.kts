@@ -17,3 +17,6 @@ dependencyResolutionManagement {
 rootProject.name = "TestClient"
 include(":androidApp")
 include(":shared")
+
+include(":KmpMLKit")
+project(":KmpMLKit").projectDir = File("../shared")
