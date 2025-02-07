@@ -50,7 +50,6 @@ kotlin {
             dependencies {
                 implementation("com.google.mlkit:vision-common:17.3.0")
                 implementation("androidx.camera:camera-core:1.4.1")
-                implementation("androidx.mlkit:mlkit-vision-internal-vkp:16.0.0-beta3")
 
                 if (project.findProperty("enableBarcodeScanning") == "true") {
                     implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
@@ -124,7 +123,7 @@ afterEvaluate {
         coordinates(
             groupId = "io.github.thearchitect123",
             artifactId = "NeuralKMP",
-            version = "0.0.2"
+            version = "0.0.3"
         )
 
         // Configure POM metadata for the published artifact
