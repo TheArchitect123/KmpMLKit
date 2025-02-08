@@ -29,6 +29,11 @@ A powerful Kotlin Multiplatform library that abstracts AI & ML capabilities, mak
 implementation("io.github.thearchitect123:NeuralKMP:0.0.4")
 ```
 
+On your Android FragmentActivity (onCreate), please make sure to use:
+```
+KmpMLAndroid.initializeMLKit(this)
+```
+
 **Please note this is still in development and subject to change.** Please also note that by downloading this artifact, you are downloading all the TensorFlow models at once.
 
 Reflection will be used to dynamically load the models (currently all the models have to be loaded), but configuration is available via your local gradle.properties file.
