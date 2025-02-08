@@ -4,6 +4,7 @@ import com.architect.kmpessentials.logging.KmpLogging
 import com.architect.kmpessentials.toast.KmpToast
 import com.architect.kmpmlkit.extensions.KmpMlLogger
 import com.architect.neuralKmp.typealiases.DefaultActionWithStringParam
+import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.languageid.LanguageIdentification
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
@@ -22,10 +23,19 @@ actual class KmpMLTranslator {
                 .setTargetLanguage(targetLanguage)
                 .build()
 
-            Translation.getClient(options).translate(translatingText).addOnSuccessListener {
-                action(it)
-            }
-                .addOnFailureListener {
+            val client = Translation.getClient(options)
+            client.downloadModelIfNeeded(DownloadConditions.Builder().requireWifi().build())
+                .addOnSuccessListener { r ->
+                    KmpLogging.writeInfo(
+                        "KMP_ML_TRANSLATOR",
+                        "Successful Download Translator Model"
+                    )
+                    client.translate(translatingText).addOnSuccessListener {
+                        action(it)
+                    }.addOnFailureListener { q ->
+                        KmpMlLogger.logErrorWithStackTrace(q.stackTraceToString())
+                    }
+                }.addOnFailureListener {
                     KmpMlLogger.logErrorWithStackTrace(it.stackTraceToString())
                 }
         }

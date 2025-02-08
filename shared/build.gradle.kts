@@ -123,7 +123,7 @@ afterEvaluate {
         coordinates(
             groupId = "io.github.thearchitect123",
             artifactId = "NeuralKMP",
-            version = "0.0.3"
+            version = "0.0.4"
         )
 
         // Configure POM metadata for the published artifact
